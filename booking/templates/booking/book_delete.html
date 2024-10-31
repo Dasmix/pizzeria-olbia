@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container-md">
+  <div class="row">
+      <div class="col-12">
+          <div class="card content-bg">
+              <div class="card-body">
+                <h2>Are you sure you want to delete?</h2>
+                <br>
+                <form method="post">
+                  {% csrf_token %}
+                    <p>Number of guests: {{ object.guest }}</p>
+                    <p>Date: {{ object.day }}</p>
+                    <p>Time: {{ object.time }}</p>
+                    <p>First name: {{ object.first_name }}</p>
+                    <p>Last name: {{ object.last_name }}</p>
+                    <p>Email address: {{ object.email }}</p>
+                    <br>
+                  <input type="submit" value="Confirm" class="btn btn-dark" />
+                  <a href="{% url 'book_manage' %}" class="btn btn-dark">Back</a>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

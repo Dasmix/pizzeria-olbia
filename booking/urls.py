@@ -4,10 +4,21 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
+    # Home url
     path('', views.HomeView.as_view(), name='home'),
-    path('register/', views.register, name='register'),
-    path('book_table/', views.book_table, name='book_table'),
-    path('manage_reservation/', views.manage_reservation, name='manage_reservation'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    # Booking url
+    path('booking/', views.ReservationCreate.as_view(),
+         name='book_table'),
+    # List url
+    path('booking/list/', views.ReservationListView.as_view(),
+         name='book_manage'),
+    # Detail url
+    path('booking/detail/<pk>/', views.ReservationDetailView.as_view(),
+         name='book_confirm'),
+    # Update url
+    path('<pk>/update', views.ReservationUpdateView.as_view(),
+         name='book_edit'),
+    # Delete url
+    path('<pk>/delete/', views.ReservationDeleteView.as_view(),
+         name='book_delete'),
 ]

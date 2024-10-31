@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-md">
+    <div class="row">
+        <div class="col-12">
+            <div class="card content-bg">
+                <div class="card-body">
+                    <h2 class="text-center">Edit your reservation</h2>
+                    <br>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <br>
+                        <input type="submit" value="Save changes" class="btn btn-dark">
+                    </form>
+                    <br>
+                    <a href="{% url 'book_delete' object.id %}" class="btn btn-burgundy-form">Delete reservation</a>
+                    <a href="{% url 'book_manage' %}" class="btn btn-dark">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

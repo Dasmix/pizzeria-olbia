@@ -8,9 +8,39 @@
       <div class="col-12">
           <div class="card content-bg">
               <div class="card-body">
-                <p>Logged out!</p>
-                <a href="{% url 'log_in' %}" class="btn btn-dark">Click here to login again.</a>
-                <a href="{% url 'home' %}" class="btn btn-dark">Return to front page</a>
+                {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+              {% endif %}
+            
+              {% if next %}
+                {% if user.is_authenticated %}
+                  <p>Your account doesn't have access to this page. To proceed,
+                  please login with an account that has access.</p>
+                {% else %}
+                  <p>Please login</p>
+                {% endif %}
+              {% endif %}
+              
+              <form method="post" action="{% url 'log_in' %}">
+                {% csrf_token %}
+                <table>
+                  <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                  </tr>
+                  <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                  </tr>
+                </table>
+                <input type="submit" value="Login" class="btn btn-dark">
+                <input type="hidden" name="next" value="{{ next }}">
+              </form>
+              <br>
+              <div>
+                <p>Don't have an account yet?</p>
+                <a href="{% url 'sign_up' %}" class="btn btn-dark">Register an account</a>
+              </div>
               </div>
           </div>
       </div>
