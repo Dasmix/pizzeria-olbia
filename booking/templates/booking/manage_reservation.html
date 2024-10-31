@@ -1,15 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center">Manage Your Reservation</h2>
-    <form method="POST" action="{% url 'manage_reservation' %}">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="reservation_id" class="form-label">Reservation ID</label>
-            <input type="text" class="form-control" id="reservation_id" name="reservation_id" required>
+
+
+<div class="container-md">
+    <div class="row">
+        <div class="col-12">
+            <div class="card content-bg">
+                <div class="card-body">
+                    <h2 class="text-center">Your reservations</h2>
+                    <ul>
+                      <!-- Iterate over object_list -->
+                      {% for object in object_list %}
+                      <!-- Display Objects -->
+                      <li>Booking number: {{ object.id }}</li>
+                      <li>Number of guests: {{ object.guest }}</li>
+                      <li>Date: {{ object.day }}</li>
+                      <li>Time: {{ object.time }}</li>
+                      <li>First name: {{ object.first_name }}</li>
+                      <li>Last name: {{ object.last_name }}</li>
+                      <a href="{% url 'restaurant-update' object.id %}" class="btn btn-gold-form">Edit reservation</a>
+                      <hr />
+                      {% empty %}
+                      <li>No reservations yet.</li>
+                      {% endfor %}
+                    </ul>
+                    <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-dark">Find Reservation</button>
-    </form>
+    </div>
 </div>
-{% endblock %}
+
+{%endblock%}

@@ -1,23 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center">Book a Table</h2>
-    <form method="POST" action="{% url 'book_table' %}">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="date" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" required>
+
+
+<div class="container-md">
+    <div class="row">
+        <div class="col-12">
+            <div class="card content-bg">
+                <div class="card-body">
+                    <h5 class="text-center">Enter details for your reservation</h5>
+                    <br>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <br>
+                        <input type="submit" value="Save reservation" class="btn btn-dark">
+                        <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="time" class="form-label">Time</label>
-            <input type="time" class="form-control" id="time" name="time" required>
-        </div>
-        <div class="mb-3">
-            <label for="guests" class="form-label">Number of Guests</label>
-            <input type="number" class="form-control" id="guests" name="guests" min="1" max="5" required>
-        </div>
-        <button type="submit" class="btn btn-dark">Book Now</button>
-    </form>
+    </div>
 </div>
-{% endblock %}
+
+{%endblock%}

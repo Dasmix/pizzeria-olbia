@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+
+<div class="container-md">
+  <div class="row">
+      <div class="col-12">
+          <div class="card content-bg">
+              <div class="card-body">
+                <h2>Register account</h2>
+                <h5>To make a reservation with us, please register an account. You can then also login to manage the reservations you have made.</h5>
+                <br>
+                <form method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button type="submit" class="btn btn-dark">Sign Up</button>
+                  <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+                  </form>
+                  <br>
+                  <div>
+                  <p>Already have an account?</p>
+                  <a href="{% url 'log_in' %}" class="btn btn-dark">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
