@@ -16,12 +16,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Reservation',
+            name='login',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('guest', models.CharField(choices=[('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], max_length=10)),
                 ('day', models.DateField(default=datetime.datetime.now)),
-                ('time', models.CharField(choices=[('5:30 PM', '5:30 PM'), ('6:00 PM', '6:00 PM'), ('6:30 PM', '6:30 PM'), ('7:00 PM', '7:00 PM'), ('7:30 PM', '7:30 PM'), ('8:00 PM', '8:00 PM'), ('8:30 PM', '8:30 PM'), ('9:00 PM', '9:00 PM'), ('9:30 PM', '9:30 PM'), ('10:00 PM', '10:00 PM')], max_length=10)),
+                ('time', models.CharField(choices=[('6:00 PM', '6:00 PM'), ('6:30 PM', '6:30 PM'), ('7:00 PM', '7:00 PM'), ('7:30 PM', '7:30 PM'), ('8:00 PM', '8:00 PM'), ('8:30 PM', '8:30 PM'), ('9:00 PM', '9:00 PM'), ('9:30 PM', '9:30 PM'), ('10:00 PM', '10:00 PM')], max_length=10)),
                 ('first_name', models.CharField(default='', max_length=100)),
                 ('last_name', models.CharField(default='', max_length=100)),
                 ('email', models.EmailField(default='', max_length=100)),
