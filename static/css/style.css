@@ -10,6 +10,13 @@ body {
     color: #333;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 .container-md {
     max-width: 800px;
     margin: 2rem auto;
