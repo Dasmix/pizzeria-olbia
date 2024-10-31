@@ -27,11 +27,11 @@ class HomeView(generic.ListView):
 # This class renders view to create a reservation
 class ReservationCreate(LoginRequiredMixin, generic.CreateView):
     model = Reservation
-    template_name = 'booking/reservation_form.html'
+    template_name = 'booking/book_table.html'
     fields = (['guest', 'day', 'time', 'first_name', 'last_name', 'email'])
 
     def get_success_url(self):
-        return reverse('restaurant-detail', kwargs={'pk': self.object.pk})
+        return reverse('book_confirm', kwargs={'pk': self.object.pk})
 
     def form_valid(self, form):
         reservation = form.save(commit=False)
@@ -43,7 +43,7 @@ class ReservationCreate(LoginRequiredMixin, generic.CreateView):
 # This class renders details of a reservation
 class ReservationDetailView(LoginRequiredMixin, generic.DetailView):
     model = Reservation
-    template_name = 'booking/reservation_detail.html'
+    template_name = 'booking/book_confirm.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(ReservationDetailView,
@@ -55,7 +55,7 @@ class ReservationDetailView(LoginRequiredMixin, generic.DetailView):
 # This class renders a list of reservations
 class ReservationListView(LoginRequiredMixin, generic.ListView):
     model = Reservation
-    template_name = 'booking/reservation_list.html'
+    template_name = 'booking/book_manage.html'
 
     def get_queryset(self):
         logged_user = self.request.user
@@ -65,7 +65,7 @@ class ReservationListView(LoginRequiredMixin, generic.ListView):
 # This class renders update of a reservation
 class ReservationUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Reservation
-    template_name = 'booking/reservation_update.html'
+    template_name = 'booking/book_confirm.html'
     fields = (['guest', 'day', 'time', 'first_name', 'last_name'])
     success_url = "/booking/list/"
 
@@ -73,5 +73,5 @@ class ReservationUpdateView(LoginRequiredMixin, generic.UpdateView):
 # This class renders delete of a reservation
 class ReservationDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Reservation
-    template_name = "booking/reservation_confirm_delete.html"
+    template_name = "booking/book_delete.html"
     success_url = "/booking/list/"
