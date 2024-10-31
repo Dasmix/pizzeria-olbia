@@ -87,3 +87,78 @@ p {
 .social-links:hover {
     color: #adb5bd;
 }
+
+.navbar {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar-bg {
+    background-color: #e9ecef;
+}
+
+.navbar-max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar-brand .brand {
+    color: #d9534f; 
+}
+
+.navbar-brand:hover {
+    color: #c9302c;
+    text-decoration: none;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-border-toggler {
+    border-color: #ccc;
+}
+
+.toggler-bg {
+    background-color: #333;
+}
+
+.collapse {
+    justify-content: flex-end;
+}
+
+.no-flex-grow {
+    flex-grow: 0;
+}
+
+.login-status {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.login-status li {
+    margin-right: 1rem;
+    color: #333;
+}
+
+.login-status .btn-dark {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.login-status .btn-dark:hover {
+    background-color: #495057;
+}
